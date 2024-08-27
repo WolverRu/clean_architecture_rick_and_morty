@@ -15,6 +15,9 @@ void main() {
     getAllPersons = GetAllPersons(personRepository: mockPersonRepository);
   });
 
+  const int page = 1;
+  const String name = 'Rick Sanchez';
+
   final testInfo = InfoPerson(
     count: 826,
     pages: 42,
@@ -58,12 +61,12 @@ void main() {
   test('should get all persons from repository', () async {
     //arrange
     when(
-      () => mockPersonRepository.getAllPersons(1, 'Rick Sanchez'),
+      () => mockPersonRepository.getAllPersons(page, name),
     ).thenAnswer((_) async => Right(testPersonDetail));
 
     //act
-    final result = await getAllPersons
-        .call(PagePersonParams(page: 1, name: 'Rick Sanchez'));
+    final result =
+        await getAllPersons.call(PagePersonParams(page: page, name: name));
 
     //assert
     expect(result, Right(testPersonDetail));

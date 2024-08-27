@@ -16,6 +16,8 @@ void main() async {
     getAllEpisodes = GetAllEpisodes(personRepository: mockPersonRepository);
   });
 
+  const int page = 1;
+
   final testInfo = InfoEpisode(
     count: 51,
     pages: 3,
@@ -41,8 +43,6 @@ void main() async {
     info: testInfo,
     results: testResults,
   );
-
-  const int page = 1;
 
   test('should get all episodes from the repository', () async {
     //arrange

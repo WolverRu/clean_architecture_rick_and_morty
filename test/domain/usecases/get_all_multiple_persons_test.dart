@@ -17,6 +17,8 @@ void main() {
         GetMultiplePersons(personRepository: mockPersonRepository);
   });
 
+  const List<String> persons = ['1', '2', '3'];
+
   final origin = LocationEntity(
     name: "Earth",
     url: "https://rickandmortyapi.com/api/location/1",
@@ -52,12 +54,12 @@ void main() {
     () async {
       //arrange
       when(
-        () => mockPersonRepository.getMultiplePersons(['1', '2', '3']),
+        () => mockPersonRepository.getMultiplePersons(persons),
       ).thenAnswer((_) async => Right(testResults));
 
       //act
       final result = await getMultiplePersons.call(
-        GetMultiplePersonsParams(persons: ['1', '2', '3']),
+        GetMultiplePersonsParams(persons: persons),
       );
 
       //assert

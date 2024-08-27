@@ -17,6 +17,8 @@ void main() {
     },
   );
 
+  const List<String> episodes = ['1', '2', '3'];
+
   final List<EpisodeEntity> testResults = [
     EpisodeEntity(
       id: 1,
@@ -36,12 +38,12 @@ void main() {
   test('should get multiple episodes from the repository', () async {
     //arrange
     when(
-      () => mockPersonRepository.getMultipleEpisodes(['1', '2', '3']),
+      () => mockPersonRepository.getMultipleEpisodes(episodes),
     ).thenAnswer((_) async => Right(testResults));
 
     //act
     final result = await getMultipleEpisodes.call(
-      GetMultipleEpisodesParams(episodes: ['1', '2', '3']),
+      GetMultipleEpisodesParams(episodes: episodes),
     );
 
     //assert
