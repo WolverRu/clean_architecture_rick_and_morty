@@ -17,7 +17,7 @@ void main() {
     },
   );
 
-  final testResults = [
+  final List<EpisodeEntity> testResults = [
     EpisodeEntity(
       id: 1,
       name: "Pilot",

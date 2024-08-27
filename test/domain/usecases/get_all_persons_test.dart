@@ -29,28 +29,30 @@ void main() {
     url: "https://rickandmortyapi.com/api/location/20",
   );
 
-  final testResults = ResultsPerson(
-    id: 1,
-    name: "Rick Sanchez",
-    status: "Alive",
-    species: "Human",
-    type: "",
-    gender: "Male",
-    origin: origin,
-    location: location,
-    image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
-    episode: [
-      "https://rickandmortyapi.com/api/episode/1",
-      "https://rickandmortyapi.com/api/episode/2",
-      // ...
-    ],
-    url: "https://rickandmortyapi.com/api/character/1",
-    created: DateTime.parse("2017-11-04T18:48:46.250Z"),
-  );
+  final List<ResultsPerson> testResults = [
+    ResultsPerson(
+      id: 1,
+      name: "Rick Sanchez",
+      status: "Alive",
+      species: "Human",
+      type: "",
+      gender: "Male",
+      origin: origin,
+      location: location,
+      image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
+      episode: [
+        "https://rickandmortyapi.com/api/episode/1",
+        "https://rickandmortyapi.com/api/episode/2",
+        // ...
+      ],
+      url: "https://rickandmortyapi.com/api/character/1",
+      created: DateTime.parse("2017-11-04T18:48:46.250Z"),
+    )
+  ];
 
   final testPersonDetail = PersonEntity(
     info: testInfo,
-    results: [testResults],
+    results: testResults,
   );
 
   test('should get all persons from repository', () async {

@@ -26,7 +26,7 @@ void main() {
     url: "https://rickandmortyapi.com/api/location/20",
   );
 
-  final testResults = [
+  final List<ResultsPerson> testResults = [
     ResultsPerson(
       id: 1,
       name: "Rick Sanchez",

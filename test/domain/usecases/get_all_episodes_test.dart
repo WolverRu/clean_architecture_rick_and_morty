@@ -21,23 +21,25 @@ void main() async {
     pages: 3,
   );
 
-  final testResults = EpisodeEntity(
-    id: 1,
-    name: "Pilot",
-    airDate: "December 2, 2013",
-    episode: "S01E01",
-    characters: [
-      "https://rickandmortyapi.com/api/character/1",
-      "https://rickandmortyapi.com/api/character/2",
-      //...
-    ],
-    url: "https://rickandmortyapi.com/api/episode/1",
-    created: DateTime.parse('2017-11-10T12:56:33.798Z'),
-  );
+  final List<EpisodeEntity> testResults = [
+    EpisodeEntity(
+      id: 1,
+      name: "Pilot",
+      airDate: "December 2, 2013",
+      episode: "S01E01",
+      characters: [
+        "https://rickandmortyapi.com/api/character/1",
+        "https://rickandmortyapi.com/api/character/2",
+        //...
+      ],
+      url: "https://rickandmortyapi.com/api/episode/1",
+      created: DateTime.parse('2017-11-10T12:56:33.798Z'),
+    )
+  ];
 
   final testEpisodeDetail = AllEpisodeEntity(
     info: testInfo,
-    results: [testResults],
+    results: testResults,
   );
 
   const int page = 1;
