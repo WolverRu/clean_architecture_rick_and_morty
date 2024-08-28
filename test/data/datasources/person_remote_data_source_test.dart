@@ -1,6 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:rick_and_morty/core/constants/constants.dart';
+import 'package:rick_and_morty/core/error/exception.dart';
 import 'package:rick_and_morty/feature/data/datasources/person_remote_data_source_impl.dart';
 import 'package:http/http.dart' as http;
 import 'package:rick_and_morty/feature/data/models/all_episode_model.dart';
@@ -28,10 +29,10 @@ void main() {
       //arrange
       when(
         () => mockHttpClient.get(
-          Uri.parse(
-            Urls.episodesFromUrl(page),
-          ),
-        ),
+            Uri.parse(
+              Urls.episodesFromUrl(page),
+            ),
+            headers: {'Content-Type': 'application/json'}),
       ).thenAnswer((_) async => http.Response(
           readJson('helpers/dummy_data/dummy_episode_response.json'), 200));
 
@@ -40,6 +41,25 @@ void main() {
 
       //assert
       expect(result, isA<AllEpisodeModel>());
+    });
+
+    test(
+        'should throw a server exception when the response code is 404 or other',
+        () async {
+      //arrange
+      when(
+        () => mockHttpClient.get(
+            Uri.parse(
+              Urls.episodesFromUrl(page),
+            ),
+            headers: {'Content-Type': 'application/json'}),
+      ).thenAnswer((_) async => http.Response('Not found', 404));
+
+      //act
+      final result = await personRemoteDataSourceImpl.getAllEpisodes(page);
+
+      //assert
+      expect(result, throwsA(isA<ServerException>()));
     });
   });
 }

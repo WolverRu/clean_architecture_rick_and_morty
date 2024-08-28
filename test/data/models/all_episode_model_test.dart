@@ -59,7 +59,12 @@ void main() {
 
       //assert
       final expectedJsonMap = {
-        "info": {"count": 51, "pages": 3, "next": null, "prev": null},
+        "info": {
+          "count": 51,
+          "pages": 3,
+          "next": null,
+          "prev": null,
+        },
         "results": [
           {
             "id": 1,

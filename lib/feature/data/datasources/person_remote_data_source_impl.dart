@@ -44,8 +44,6 @@ class PersonRemoteDataSourceImpl implements PersonRemoteDataSource {
           .toList();
 
       return episodList;
-    } else if (response.statusCode == 404) {
-      return [];
     } else {
       throw ServerException();
     }
@@ -85,8 +83,6 @@ class PersonRemoteDataSourceImpl implements PersonRemoteDataSource {
           .toList();
 
       return personList;
-    } else if (response.statusCode == 404) {
-      return [];
     } else {
       throw ServerException();
     }
